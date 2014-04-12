@@ -1,2 +1,3 @@
-HackIllinois_2014
+HackIllinois 2014
 =================
+Multi-platform bitcoin & dogecoin price predictor.
