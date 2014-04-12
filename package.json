@@ -1,6 +1,6 @@
-{ "name": "HackIllinois_2014", "version": "0.0.1", "private": "true",
-	"dependencies": { 
-		"express": "3.0.0alpha4", 
-		"jade": "*", 
-		"stylus": "*", 
-		"nib": "*" } } 
+{ "name": "HackIllinois_2014", "version": "0.1.1", "private": "true",
+	"dependencies": {
+		"express": "3.0.0alpha4",
+		"jade": "*",
+		"stylus": "*",
+		"nib": "*" } }
