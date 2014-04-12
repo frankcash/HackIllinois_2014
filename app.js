@@ -28,7 +28,20 @@ function callBackForJSON(callback){
 	    $('td.right').each(function(i, elements){ // sets the starting element
 	    	var a=$(this);
 	    	var priceString = a.text();
-				var price = Number(priceString);
+				var price = "";
+
+				var problemCase = priceString.indexOf("%")
+				if(problemCase==7){ // gets rid of precent sign
+					var trueString = priceString.substring(0, problemCase);
+				}else{ // if there is no percent sign in the number
+					var trueString = priceString;
+				}
+
+				if(trueString.length > 2){
+					price = Number(trueString);
+				}else if (trueString.length < 2){
+					price = 0.0;
+				}
 				var metadata = { // creates a new object
 						price:price
 				};
