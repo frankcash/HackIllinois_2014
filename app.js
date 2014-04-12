@@ -32,8 +32,9 @@ function callBackForJSON(callback){
 					price:price
 			};
 	    metadataArray.push(metadata);
-			callback(metadataArray);
+
 	    });
+			callback(metadataArray);
 			// callback(metadataArray);
 	  } // end of if statement
 	}); // end of function
@@ -41,7 +42,7 @@ function callBackForJSON(callback){
 
 app.get('/scrape', function(req,res) { // pushes the info to a sub url
   callBackForJSON(function(data){ // call back to the function
-    res.send(data)
+    res.send(data);
   });
 })
 
