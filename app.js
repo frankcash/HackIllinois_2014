@@ -19,23 +19,28 @@ function compile(str, path) {
       .use(nib());
 }
 
-var metadataArray = [ ]; // array
-	function callBackForJSON(callback){
-	request('http://bitcoincharts.com/', function(error, response, page){
-	  if(!error && response.statusCode == 200){
-	    var $ = cheerio.load(page); // puts the html in the parser
-	    $('td.right').each(function(i, elements){ // sets the starting element
-	      var a=$(this);
-	      var price = a.text();
-	      metadataArray.push(price);
-	    });
 
+function callBackForJSON(callback){
+	request('http://bitcoincharts.com/', function(error, response, html){
+	  if(!error && response.statusCode == 200){
+			var metadataArray = [ ]; // array
+	    var $ = cheerio.load(html); // puts the html in the parser
+	    $('td.right').each(function(i, elements){ // sets the starting element
+	    var a=$(this);
+	    var price = a.text();
+			var metadata = { // creates a new object
+					price:price
+			};
+	    metadataArray.push(metadata);
+			callback(metadataArray);
+	    });
+			// callback(metadataArray);
 	  } // end of if statement
 	}); // end of function
 }
 
 app.get('/scrape', function(req,res) { // pushes the info to a sub url
-  callbackForJSON(function(data){ // call back to the function
+  callBackForJSON(function(data){ // call back to the function
     res.send(data)
   });
 })
