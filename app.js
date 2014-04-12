@@ -41,7 +41,7 @@ function callBackForJSON(callback){
 }
 
 app.get('/scrape', function(req,res) { // pushes the info to a sub url
-  callBackForJSON(function(data{ // call back to the function
+  callBackForJSON(function(data){ // call back to the function
     res.send(data);
   });
 })
