@@ -28,9 +28,9 @@ function callBackForJSON(callback){
 	    $('td.right').each(function(i, elements){ // sets the starting element
 	    	var a=$(this);
 	    	var priceString = a.text();
-				var test = Number(priceString);
+				var price = Number(priceString);
 				var metadata = { // creates a new object
-						price:test
+						price:price
 				};
 	    metadataArray.push(metadata);
 
