@@ -54,7 +54,7 @@ function callBackForJSON(callback){
 	}); // end of function
 }
 
-app.get('/scrape', function(req,res) { // pushes the info to a sub url
+app.get('/bitcoin', function(req,res) { // pushes the info to a sub url
   callBackForJSON(function(data){ // call back to the function
     res.send(data);
   });
