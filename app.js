@@ -26,11 +26,11 @@ function callBackForJSON(callback){
 			var metadataArray = [ ]; // array
 	    var $ = cheerio.load(html); // puts the html in the parser
 	    $('td.right').each(function(i, elements){ // sets the starting element
-	    var a=$(this);
-	    var price = a.text();
-			var metadata = { // creates a new object
-					price:price
-			};
+	    	var a=$(this);
+	    	var price = a.text();
+				var metadata = { // creates a new object
+						price:price
+				};
 	    metadataArray.push(metadata);
 
 	    });
@@ -41,7 +41,7 @@ function callBackForJSON(callback){
 }
 
 app.get('/scrape', function(req,res) { // pushes the info to a sub url
-  callBackForJSON(function(data){ // call back to the function
+  callBackForJSON(function(data{ // call back to the function
     res.send(data);
   });
 })
