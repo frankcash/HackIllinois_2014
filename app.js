@@ -27,9 +27,10 @@ function callBackForJSON(callback){
 	    var $ = cheerio.load(html); // puts the html in the parser
 	    $('td.right').each(function(i, elements){ // sets the starting element
 	    	var a=$(this);
-	    	var price = a.text();
+	    	var priceString = a.text();
+				var test = Number(priceString);
 				var metadata = { // creates a new object
-						price:price
+						price:test
 				};
 	    metadataArray.push(metadata);
 
