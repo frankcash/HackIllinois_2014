@@ -9,8 +9,18 @@ var cheerio = require('cheerio');
 var express = require('express')
   , stylus = require('stylus')
     , nib = require('nib')
+var fs = require("fs");
 
-var app = express(); // starts server
+// // checks to see if the SQLite file exists
+// var file = "test.db";
+// var exists = fs.existsSync(file);
+// 
+// // connects to database
+// var sqlite3 = require("sqlite3").verbose();
+// var db = new sqlite3.Database(file);
+
+// starts server
+var app = express();
 
 
 function compile(str, path) {
@@ -20,7 +30,7 @@ function compile(str, path) {
 }
 
 
-function callBackForJSON(callback){
+function callBackForBitcoin(callback){
 	request('http://bitcoincharts.com/', function(error, response, html){
 	  if(!error && response.statusCode == 200){
 			var metadataArray = [ ]; // array
@@ -42,6 +52,7 @@ function callBackForJSON(callback){
 				}else if (trueString.length < 2){
 					price = 0.0;
 				}
+
 				var metadata = { // creates a new object
 						price:price
 				};
@@ -55,7 +66,7 @@ function callBackForJSON(callback){
 }
 
 app.get('/bitcoin', function(req,res) { // pushes the info to a sub url
-  callBackForJSON(function(data){ // call back to the function
+  callBackForBitcoin(function(data){ // call back to the function
     res.send(data);
   });
 })
